@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastread() (ios_base::sync_with_stdio(false), cin.tie(NULL));
+using ll = long long;
+using ld = long double;
+using ull = unsigned long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using vi = vector<int>;
+using vll = vector<ll>;
+using vvi = vector<vi>;
+using vvll = vector<vll>;
+vll seive(ll a, ll b)
+{
+    vector<bool> is_Prime(b + 1, true);
+    is_Prime[0] = is_Prime[1] = false;
+    for (ll it = 2; it * it <= b; it++)
+    {
+        if (is_Prime[it])
+        {
+            for (ll j = it * it; j <= b; j += it)
+            {
+                is_Prime[j] = false;
+            }
+        }
+    }
+    vll prime_numbers;
+    for (ll i = a; i <= b; i++)
+    {
+        if (is_Prime[i])
+        {
+            prime_numbers.push_back(i);
+        }
+    }
+    return prime_numbers;
+}
+void solve()
+{
+    ll m, n;
+    cin >> m >> n;
+    vll arr = seive(m, n);
+    if (arr.empty())
+    {
+        cout << "Absent\n";
+    }
+    else
+    {
+        for (auto it : arr)
+            cout << it << "\n";
+    }
+}
+
+int main()
+{
+    fastread();
+    // ll t;
+    // cin >> t;
+    // while (t--)
+    {
+        solve();
+    }
+    return 0;
+}
