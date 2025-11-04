@@ -34,6 +34,9 @@ ll modInverse(ll a)
 {
     return power(a, MOD - 2);
 }
+
+auto it = lower_bound(v.begin(), v.end(), x);
+
 // ----------------------------
 
 
